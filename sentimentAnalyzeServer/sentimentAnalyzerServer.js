@@ -86,12 +86,12 @@ app.get("/url/sentiment", (req,res) => {
 
     const nlu = getNLUInstance();
 
-    nlu.analyze(analyzeParams.then(analysisResults => {
-        return res.send(return res.send(analysisResults.result.keywords[0].sentiment,null,2));
+    nlu.analyze(analyzeParams).then(analysisResults => {
+        return res.send(analysisResults.result.keywords[0].sentiment,null,2);
     })
     .catch(err => { 
         return res.send("Could not do desired operation "+err);
-    }));
+    });
 });
 
 //The endpoint for the webserver ending with /text/emotion
